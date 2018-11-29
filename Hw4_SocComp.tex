@@ -1,0 +1,233 @@
+%
+% This is the LaTeX template file for lecture notes for EE 382C/EE 361C.
+%
+% To familiarize yourself with this template, the body contains
+% some examples of its use.  Look them over.  Then you can
+% run LaTeX on this file.  After you have LaTeXed this file then
+% you can look over the result either by printing it out with
+% dvips or using xdvi.
+%
+% This template is based on the template for Prof. Sinclair's CS 270.
+
+\documentclass[twoside]{article}
+\usepackage{graphics}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+
+%
+% The following macro is used to generate the header.
+%
+\newcommand{\lecture}[4]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   \setcounter{lecnum}{#1}
+   \setcounter{page}{1}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf EE 382V: Social Computing
+                        \hfill Fall 2018} }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill Homework 4: #2  \hfill} }
+       \vspace{2mm}
+       \hbox to 6.28in { {\it Partner1: #3 \hfill Partner2: #4} }
+      \vspace{2mm}}
+   }
+   \end{center}
+   \markboth{EE382V:Social Computing HW4: #2}{EE382V:Social Computing HW4: #2}
+   %{\bf Disclaimer}: {\it These notes have not been subjected to the
+   %usual scrutiny reserved for formal publications.  They may be distributed
+   %outside this class only with the permission of the Instructor.}
+   \vspace*{4mm}
+}
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+			\vspace{#2}
+			\begin{center}
+			Figure \thelecnum.#1:~#3
+			\end{center}
+	}
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+\begin{document}
+%FILL IN THE RIGHT INFO.
+%\lecture{**LECTURE-NUMBER**}{**DATE**}{**LECTURER**}{**SCRIBE**}
+\lecture{1}{November 30}{Javier Palomares}{Porter Perry}
+%\footnotetext{These notes are partially based on those of Nigel Mansell.}
+
+% **** YOUR NOTES GO HERE:
+
+% Some general latex examples and examples making use of the
+% macros follow.  
+%**** IN GENERAL, BE BRIEF. LONG SCRIBE NOTES, NO MATTER HOW WELL WRITTEN,
+%**** ARE NEVER READ BY ANYBODY.
+\section{Question1}
+[Textbook Ch.23 Question 1] \\
+In this chapter, we discussed how voting systems based on majority rule are susceptible to strategic agenda-setting. Let’s explore how one might do this on some basic examples. \\
+
+(a) Suppose there are four alternatives, named A, B, C, and D. There are three voters who have the following individual rankings:
+
+$B >_{1} C >_{1} D >_{1} A$\\
+$C >_{2} D >_{2} A >_{2} B$\\
+$D >_{3} A >_{3} B >_{3} C$\\
+
+You're in charge of designing an agenda for considering the alternatives in pairs and eliminating them using majority vote, via an elimination tournament in the style of the examples shown in Figure 23.3. \\
+You would like alternative A to win. Can you design an agenda (i.e. an elimination tournament) in which A wins? If so, describe how you would structure it; if not, explain why it is not possible. \\
+
+(b) Now, consider the same question, but for a slightly different set of individual rankings in which the last two positions in voter 3's ranking have been swapped. That is, we have: \\
+
+$B >_{1} C >_{1} D >_{1} A$ \\
+$C >_{2} D >_{2} A >_{2} B$ \\
+$D >_{3} A >_{3} C >_{3} B$ \\
+
+We now ask the same question: Can you design an agenda in which A wins? If so, describe how you would structure it; if not, explain why it is not possible.
+
+\subsection{Answer1}
+
+(a) Yes. Alternative $A$ would only win by majority rule over alternative $B$. Alternative $B$ can only win by majority rule over alternative $C$. Alternative $C$ will win by majority rule over both alternatives $A$ and $D$. So, structure the elimination tournament by method of introducing new alternatives one at a time. At the first step, have alternative $C$ go against $D$. The winner of the first step, alternative $C$, would then go against $B$. The winner of the second step, which would be alternative $B$, would then finally go against alternative $A$. The final winner of alternatives $A$ vs $B$ would be $A$. \\
+
+\hspace*{19mm}A \\
+\hspace*{18mm}/ \textbackslash \\
+\hspace*{16mm}B\hspace*{4mm}A \\
+\hspace*{15mm}/ \textbackslash \\
+\hspace*{13mm}C\hspace*{4mm}B \\
+\hspace*{12mm}/ \textbackslash \\
+\hspace*{10mm}D\hspace*{4mm}C \\
+
+(b) No, it is not possible for alternative $A$ to win an voting elimination tournament by majority rule. Again, alternative $A$ would only win by majority rule over alternative $B$. However, alternative $B$ will not win by majority rule over any other alternative, so it is not possible to for alternative $B$ to advance to the final step where alternative $A$ could beat it and win the overall tournament.
+
+
+\section{Question2}
+[Textbook Ch.23 Question 2] \\
+The Borda Count is susceptible to strategic misreporting of preferences. Here are some examples to practice how this works. \\
+
+(a) Suppose you are one of three people voting on a set of four alternatives named A, B, C, and D. The Borda Count will be used as the voting system. The other two voters have the rankings \\
+
+$D >_{1} C >_{1} A >_{1} B$ \\
+$D >_{2} B >_{2} A >_{2} C$ \\
+
+You are voter 3 and would like alternative A to appear first in the group ranking, as determined by the Borda Count. Can you construct an individual ranking for yourself so that this will be the result? If so, explain how you would choose your individual ranking; if not, explain why it is not possible. \\
+
+(b) Let’s consider the same question, but with different rankings for the other two voters, as follows: \\
+
+$D >_{1} A >_{1} C >_{1} B$ \\
+$B >_{2} D >_{2} A >_{2} C$ \\
+
+Again, as voter 3, you would like alternative A to appear first in the group ranking determined by the Borda Count. Can you construct an individual ranking for yourself so that this will be the result? If so, explain how you would choose your individual ranking; if not, explain why it is not possible.
+
+\subsection{Answer2}
+
+(a) No. Using the Borda count system, alternative $D$ already has 6 points from the first two voters, while alternative $A$ has only two. The gap between the two cannot be closed with one additional vote, which would could give alternative $A$ at most 5 points.  
+
+(b) Yes. Based on the first two votes, the alternative would have the following Borda count totals:
+
+$A = 3$\\
+$B = 3$\\
+$C = 1$\\
+$D = 5$\\
+
+A vote with alternative $A$ ranked first, and $D$ ranked last would would cause $A$ to overtake $D$ with a count of $6$ to $5$. Alternatives $B$ and $C$ would be second and third rank, and it does not matter which. So the possible ranks would be:
+
+$A >_{3} C >_{3} B >_{3} D$ \\
+\hspace*{13mm}-or-\\
+$A >_{3} B >_{3} C >_{3} D$ \\
+
+
+\section{Question3}
+
+Compute $5^{97}$ mod $11$.
+
+\subsection{Answer3}
+
+$5^{1}$ mod $11 = 5$ \\
+$5^{2}$ mod $11 = (5 \times 5)$ mod $11) = 25$ mod $11 = 3$ \\
+$5^{4}$ mod $11 = (3 \times 3)$ mod $11) = 9$ mod $11 = 9$ \\
+$5^{8}$ mod $11 = (9 \times 9)$ mod $11) = 81$ mod $11 = 4$ \\
+$5^{16}$ mod $11 = (4 \times 4)$ mod $11) = 16$ mod $11 = 5$ \\
+$5^{32}$ mod $11 = (5 \times 5)$ mod $11) = 25$ mod $11 = 3$ \\
+$5^{64}$ mod $11 = (3 \times 3)$ mod $11) = 9$ mod $11 = 9$ \\
+
+$5^{97}$ mod $11 = (5^{64} \times 5^{32} \times 5^{1})$ mod $11$\\ \hspace*{17mm} $= ((5^{64}$ mod $11) \times (5^{32}$ mod $11) \times (5^{1}$ mod $11))$ mod $11$  \\
+\hspace*{17mm} $= (9 \times 3 \times 5)$ mod $11$ \\
+\hspace*{17mm} $= 135$ mod $11$ \\
+\hspace*{17mm} $= 3$ \\
+
+\section{Question4}
+
+Let two primes $p$ and $q$ for the RSA scheme be 11 and 13. Suppose that you want the public key $e$ of your encryption scheme to be 7. What would be the private key $d$ for this setting? What would be the ciphertext corresponding to the number 71?
+
+\subsection{Answer4}
+
+RSA key pair algorithm for $p = 11$ and $q = 13$:
+
+1. Let $n = pq = 11 \times 13 = 143$. \\
+2. Compute Euler's totient function for $n$: \\
+\hspace*{4mm}$\phi(143) = (11-1) \times (13-1) = 120$ \\
+3. Choose $e = 7$ as number relatively prime to 143. \\
+4. Find $d$ such that $d \times e \equiv  1$ mod $\phi(n)$: \\
+\hspace*{4mm} $d = 103$ works since $(7 \times 103)$ mod $120 = 721$ mod $120 = 1$\\
+
+$71^{1}$ mod $143 = 71$ \\
+$71^{2}$ mod $143 = 5041$ mod $143 = 36$\\
+$71^{4}$ mod $143 = 36 \times 36$ mod $143 = 9$\\
+
+The ciphertext corresponding to message number 71 would be:
+
+$C = M^{e}$ mod $n$ \\
+\hspace*{4mm}$= 71^{7}$ mod $143$ \\
+\hspace*{4mm}$= (71^{4} \times 71^{2} \times 71^{2})$ mod $143$\\
+\hspace*{4mm}$= (9 \times 36 \times 71)$ mod $143$ \\
+\hspace*{4mm}$= (23004)$ mod $143$ \\
+\hspace*{4mm}$= 124$
+
+\end{document}
+
+
+
+
+
